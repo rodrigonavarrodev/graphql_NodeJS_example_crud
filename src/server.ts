@@ -1,6 +1,6 @@
 import express, { Application } from 'express'
-import productosRoutes from '../routes/productos'
-import carritosRoutes from '../routes/carritos'
+import productosRoutes from './routes/productos'
+import carritosRoutes from './routes/carritos'
 import cors from 'cors'
 
 
