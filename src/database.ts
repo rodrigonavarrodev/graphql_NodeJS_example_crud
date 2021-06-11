@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 async function connect() {
     try {
-        await mongoose.connect('mongodb://localhost/ecommerce_coderhouse', {
+        await mongoose.connect('mongodb://localhost/ecommerce', {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });

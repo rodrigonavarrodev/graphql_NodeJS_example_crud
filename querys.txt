@@ -1,0 +1,76 @@
+Ejemplos de Querys con GraphQL
+
+//// Buscar un producto por id
+
+{
+	producto(id:"60c3a766f4ec3952288ea8d0")
+  {
+    _id,
+    nombre,
+    stock,
+    precio
+  }
+}
+
+
+//// Buscar todos los productos
+
+
+{
+	productos
+  {
+    _id,
+    nombre,
+    descripcion,
+    codigo,
+    foto,
+    stock,
+    precio
+  }
+}
+
+
+
+//// Crear un producto
+
+mutation {
+  crearProducto(Producto: {
+     nombre: "Monitor"
+    descripcion: "24 pulgadas"
+    codigo: "abc124"
+    foto: "mo.jgp"
+    precio: 20000
+    stock: 100
+  }) {
+    _id,
+    nombre,
+    descripcion
+  }
+}
+
+
+//// Borrar producto
+
+mutation {
+  deleteProducto(id: "60c3b0ccf62f450f24ac8f79"){
+    _id,
+    nombre
+  }
+}
+
+
+//// Actualizar producto
+
+mutation {
+  updateProducto(
+    id: "60c3a766f4ec3952288ea8d0",
+  	producto: {
+      nombre: "Auriculares"
+      descripcion: "Cambie la descripcion"
+    }
+  ) {
+    _id,
+    nombre,
+    descripcion
+  }
+}

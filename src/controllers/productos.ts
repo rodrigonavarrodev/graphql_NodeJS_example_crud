@@ -3,54 +3,44 @@ import Producto from '../models/producto'
 
 export const listarProductos = async (req: Request, res: Response) => {
     const productos = await Producto.find();
-    res.json ({
-        productos
-    })
+    return productos
 }
 
-export const listarProducto = async (req: Request, res: Response) => {
-
-    const { id } = req.params;
+export const listarProducto = async (args: any) => {
+    
+    const id = args.id;
     const producto = await Producto.findById(id)
 
-    res.json ({
-        producto
-    })
+    return producto
 }
 
-export const agregarProducto = async (req: Request, res: Response) => {
+export const agregarProducto = async (args: any) => {
 
-    const { nombre, descripcion, codigo, foto, precio, stock } = req.body;
+    
+    const { nombre, descripcion, codigo, foto, precio, stock } = args.Producto;
     const nuevoProducto = new Producto({ nombre, descripcion, codigo, foto, precio, stock })
     await nuevoProducto.save()
-    res.json ({
-        nuevoProducto
-    })
+    return nuevoProducto
 }
 
 
-export const actualizarProducto = async (req: Request, res: Response) => {
+export const actualizarProducto = async (args: any) => {
 
-    const { id } = req.params;
-    const { nombre, descripcion, codigo, foto, precio, stock } = req.body;
+    const id = args.id
+    const { nombre, descripcion, codigo, foto, precio, stock } = args.producto;
 
     await Producto.findByIdAndUpdate(id, {nombre, descripcion, codigo, foto, precio, stock})
     const producto = await Producto.findById(id)
 
-    res.json ({
-        producto
-    })
+    return producto
 }
 
 
-export const borrarProducto = async (req: Request, res: Response) => {
+export const borrarProducto = async (args: any) => {
 
-    const { id } = req.params;
+    const id = args.id;
     const producto = await Producto.findByIdAndDelete(id)
-
-    res.json ({
-        producto
-    })
+    return producto
 } 
 
 
