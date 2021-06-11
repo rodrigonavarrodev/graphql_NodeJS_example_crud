@@ -1,7 +1,6 @@
 import express, { Application } from 'express'
 import productosRoutes from './routes/productos'
 import carritosRoutes from './routes/carritos'
-import graphqlRoutes from './routes/graphql'
 import cors from 'cors'
 import { graphqlHTTP } from 'express-graphql'
 import { buildSchema } from 'graphql'
@@ -90,7 +89,7 @@ class Server {
     routes() {
         this.app.use(this.apiPaths.productos, productosRoutes)
         this.app.use(this.apiPaths.carrito, carritosRoutes)
-        this.app.use(this.apiPaths.graphql, graphqlHTTP(obj), graphqlRoutes)
+        this.app.use(this.apiPaths.graphql, graphqlHTTP(obj))
     }
 
     listen() {
